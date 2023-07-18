@@ -3,8 +3,7 @@ use std::{env, process};
 
 fn main() {
     // iterator over the provided arguments, collected into a vector of strings
-    let args = env::args().collect::<Vec<String>>();
-    let config = Config::build(&args).unwrap_or_else(|error| {
+    let config = Config::build(env::args()).unwrap_or_else(|error| {
         // eprintln is used to print errors to the standard error, errors
         // should always be printed to standard error and not standard output
         eprintln!("Problem parsing the arguments: {error}");
